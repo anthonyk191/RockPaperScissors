@@ -5,13 +5,6 @@
 // let tempEvent = new Event("scoreboardSignal");
 // scoreboardComputer.dispatchEvent(tempEvent);
 
-
-
-let scoreboardComputer = 0
-let scoreboardHuman = 0
-
-console.log("Hello World")
-
 //Computer Function For declaring either rock paper or scissors
 function getComputerChoice(){
     //Return rock, paper, or scissors
@@ -36,11 +29,11 @@ function playGame(input){
     if (computerChoice == "rock"){
         if (humanChoice == "scissor"){
             console.log("computer wins");
-            return((0,1))
+            addPointComputer()
         }
         else if (humanChoice == "paper"){
             console.log("human wins");
-            return((1,0))
+            addPointHuman()
         }
         else{
             console.log("tie");
@@ -49,11 +42,11 @@ function playGame(input){
     if (computerChoice == "scissor"){
         if (humanChoice == "paper"){
             console.log("computer wins")
-            return((0,1))
+            addPointComputer()
         }
         else if (humanChoice == "rock"){
             console.log("human wins");
-            return((1,0))
+            addPointHuman()
         }
         else{
             console.log("tie");
@@ -62,52 +55,58 @@ function playGame(input){
     if (computerChoice == "paper"){
         if (humanChoice == "rock"){
             console.log("computer wins");
-            return((0,1))
+            addPointComputer()
         }
         else if (humanChoice == "scissor"){
             console.log("human wins");
-            return((1,0))
+            addPointHuman()
         }
         else{
             console.log("tie");
         }
     }
-
-}
-//Update score board (increment scoreboard by who won)
-function updateScoreboard(gameResult){
-    //grab input from human and computer and calculate who wins
-    if (gameResult == "computer wins"){
-        scoreboardComputer += 1;
-        console.log(scoreboardComputer)
-        // return {scoreboardComputer, scoreboardHuman};
-    }
-    else if (gameResult == "human wins"){
-        scoreboardHuman += 1;
-        console.log(scoreboardHuman)
-        // return {scoreboardComputer, scoreboardHuman};
-    }
-    else{
-        // return {scoreboardComputer, scoreboardHuman};
-    }
-    // console.log(scoreboardComputer)
-    // console.log(scoreboardHuman)
+    console.log(`Points of player = ${scoreboardHuman}`)
+    console.log(`Points of computer = ${scoreboardComputer}`)
+    updateScoreboard()
+    // console.log(`I clicked a button ${input}`)
 }
 
-// let humanChoiceButton = document.querySelector(button)
-// humanChoiceButton.addEventListener("customEvent", function); 
+//Add human a point
+function addPointHuman() {
+    scoreboardHuman+= 1
+}
+//Add computer a point
+function addPointComputer() {
+    scoreboardComputer+= 1
+}
+
+function updateScoreboard() {
+    let displayPlayerScore = document.getElementById("playerScore")
+    let displayComputerScore = document.getElementById("computerScore")
+    displayPlayerScore.textContent = `Player Score: ${scoreboardHuman}`
+    displayComputerScore.textContent = `Computer Score: ${scoreboardComputer}`
+}
+function updateOutcome(result) {
+    let displayGameResult = document.getElementById("gameResult")
+    displayGameResult.textContent = `The result is a ${result}`   
+}
+
+//Declarations
+let scoreboardComputer = 0
+let scoreboardHuman = 0
+
+updateScoreboard()
+
+//Check for player inputs
 let buttonRock = document.getElementById("rock");
 let buttonPaper = document.getElementById("paper");
 let buttonScissor = document.getElementById("scissor");
 buttonRock.addEventListener("click", () => {
-    scoreboardHuman, scoreboardComputer = playGame("rock")})
+    playGame("rock")})
 buttonPaper.addEventListener("click", () => {
-    scoreboardHuman, scoreboardComputer = playGame("paper")})
+    playGame("paper")})
 buttonScissor.addEventListener("click", () => {
-    scoreboardHuman, scoreboardComputer = playGame("scissor")})
-
-
-//Add human a point
+    playGame("scissor")})
 //console.log spit out score
 
 // while (scores.scoreboardComputer < 1 && scores.scoreboardHuman < 1){
