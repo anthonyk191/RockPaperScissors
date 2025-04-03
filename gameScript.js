@@ -29,40 +29,49 @@ function playGame(input){
     if (computerChoice == "rock"){
         if (humanChoice == "scissor"){
             console.log("computer wins");
+            updateOutcome("computer wins")
             addPointComputer()
         }
         else if (humanChoice == "paper"){
             console.log("human wins");
+            updateOutcome("human wins")
             addPointHuman()
         }
         else{
             console.log("tie");
+            updateOutcome("tie")
         }
     }
     if (computerChoice == "scissor"){
         if (humanChoice == "paper"){
             console.log("computer wins")
+            updateOutcome("computer wins")
             addPointComputer()
         }
         else if (humanChoice == "rock"){
             console.log("human wins");
+            updateOutcome("human wins")
             addPointHuman()
         }
         else{
             console.log("tie");
+            updateOutcome("tie")
         }
     }
     if (computerChoice == "paper"){
         if (humanChoice == "rock"){
             console.log("computer wins");
+            updateOutcome("computer wins")
             addPointComputer()
         }
         else if (humanChoice == "scissor"){
             console.log("human wins");
+            updateOutcome("human wins")
             addPointHuman()
         }
         else{
             console.log("tie");
+            updateOutcome("tie")
         }
     }
     console.log(`Points of player = ${scoreboardHuman}`)
@@ -88,7 +97,7 @@ function updateScoreboard() {
 }
 function updateOutcome(result) {
     let displayGameResult = document.getElementById("gameResult")
-    displayGameResult.textContent = `The result is a ${result}`   
+    displayGameResult.textContent = `The result is:  ${result}`   
 }
 
 //Declarations
